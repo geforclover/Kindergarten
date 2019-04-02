@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html ng-app="kinderGartenApp">
+<head>
+<meta charset="utf-8">
+<title>幼儿园工作台</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" type="text/css" href="style/index.css">
+<link rel='stylesheet prefetch' href='https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel="stylesheet" type="text/css" href="style/textAngular.css">
+<link rel="stylesheet" type="text/css" href="style/sweetalert.css">
+<script type="text/javascript" src="scripts/angular.min.js"></script>
+<script type="text/javascript" src="scripts/dataRequestFactory.js"></script>
+<script type="text/javascript" src="ngmodules/angular-file-upload.min.js"></script>
+<script>
+  var kinderGarten = angular.module("kinderGartenApp", ['homeworkFilters', 'ui.router', 'oc.lazyLoad', 'dataRequestFactory', 'textAngular', 'angularFileUpload'])
+  kinderGarten.config(function ($stateProvider, $locationProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+    /* 我的课程 **********************************************/
+    $stateProvider
+      .state('myCourses', {  // 我的课程
+        url: '/myCourses',
+        templateUrl: 'views/myCourses.html'
+      })
+      .state('myCourses.chinese', {  // 我的语文课程
+        url: '/chinese',
+        controller: 'tableMainViewOperate',
+        templateUrl: 'components/myCourses/coursesMainView.html',
+        resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('scripts/tableMainViewOperate.js')
+            }]
+        }
+      })
+      .state('myHomework', {  // 我的作业
+        url: '/myHomework',
+        templateUrl: 'views/myHomework.html'
+      })
+      .state('myHomework.expectationHomework', {  // 待完成作业
+        url: '/expectationHomework',
+        controller: 'tableMainViewOperate',
+        templateUrl: 'components/myHomework/teacher/homeworkMainView.html',
+        resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('scripts/tableMainViewOperate.js')
+            }]
+        }
+      })
+      .state('myHomework.createHomework', {  // 创建作业
+        url: '/createHomework',
+        //controller: 'imageUpload',
+        templateUrl: 'components/myHomework/teacher/createHomework.html'
+        /*resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('scripts/imageUpload.js')
+            }]
+        }*/
+      })
+      .state('myHomework.correctedHomework', {  // 已批改作业
+        url: '/correctedHomework',
+        controller: 'tableMainViewOperate',
+        templateUrl: 'components/myHomework/teacher/homeworkMainView.html',
+        resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('scripts/tableMainViewOperate.js')
+            }]
+        }
+      })
+      .state('myHomework.unPublishHomework', {  // 优秀作业
+        url: '/unPublishHomework',
+        controller: 'tableMainViewOperate',
+        templateUrl: 'components/myHomework/teacher/homeworkMainView.html',
+        resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('scripts/tableMainViewOperate.js')
+            }]
+        }
+      })
+      .state('moreExciting', {
+        url: '/moreExciting',
+        //controller: 'moreExcitingCtrl',
+        templateUrl: 'views/moreExciting.html'
+        /*resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('components/moreExciting/moreExciting.js')
+            }]
+        }*/
+      })
+      .state('personalCenter', {
+        url: '/personalCenter',
+        //controller: 'personalCenterCtrl',
+        templateUrl: 'views/personalCenter.html'
+        /*resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('components/personalCenter/personalCenter.js')
+            }]
+        }*/
+      })
+    $urlRouterProvider.otherwise('/personalCenter');
+  })
+</script>
+<script type="text/javascript" src="ngmodules/angular-route.js"></script>
+<script type="text/javascript" src="ngmodules/ocLazyLoad.min.js"></script>
+<script type="text/javascript" src="controllers/teacher/homeworkControllers.js"></script>
+<script type="text/javascript" src="controllers/teacher/homeworkDetailControllers.js"></script>
+<script type="text/javascript" src="filters/homeworkFilters.js"></script>
+<script type="text/javascript" src="scripts/Tween.js"></script>
+<script type="text/javascript" src="controllers/controllers.js"></script>
+<script type="text/javascript" src="controllers/directives.js"></script>
+</head>
+<body>
+  <!-- 顶部快捷菜单 ************************************************-->
+  <nav class="top-navBar" id="topNavBar">
+    <a class="" href="###" title="">
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"></use></svg>
+      <span class="__label">学习设置</span>
+    </a>
+    <a class="" href="###" title="">
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-59"></use></svg>
+      <span class="__label">学习设置</span>
+    </a>
+    <a class="" href="###" title="">
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"></use></svg>
+      <span class="__label">学习设置</span>
+    </a>
+    <a class="" href="###" title="">
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"></use></svg>
+      <span class="__label">学习设置</span>
+    </a>
+    <a class="" href="###" title="">
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"></use></svg>
+      <span class="__label">学习设置</span>
+    </a>
+    <a class="" href="###" title="">
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-floor"></use></svg>
+      <span class="__label">学习设置</span>
+    </a>
+  </nav>
+  <!-- 主界面区 ****************************************************-->
+  <div>
+    <div ui-view="" />
+  </div>
+  <!-- 底部面板菜单 ************************************************-->
+  <div class="footer-navBar">
+    <ul class="footer-navBar-wrap" id="js-navBarHover">
+      <li class="navBar-item _courses" ui-sref="myCourses">
+        <div class="navBar-center">
+          <span class="_chinese"><span></span>备课中心</span>
+          <span class="_english">MY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COURSES</span>
+        </div>
+      </li>
+      <li class="navBar-item _homework" ui-sref="myHomework">
+        <div class="navBar-center">
+          <span class="_chinese"><span></span>作业中心</span>
+          <span class="_english">MY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HOMEWORK</span>
+        </div>
+      </li>
+      <li class="navBar-item _exciting" ui-sref="moreExciting">
+        <div class="navBar-center">
+          <span class="_chinese"><span></span>教学中心</span>
+          <span class="_english">MORE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXCITING</span>
+        </div>
+      </li>
+      <li class="navBar-item _person" ui-sref="personalCenter">
+        <div class="navBar-center">
+          <span class="_chinese"><span></span>答疑中心</span>
+          <span class="_english">PERSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CENTER</span>
+        </div>
+      </li>
+      <li class="navBar-item _person" ui-sref="personalCenter">
+        <div class="navBar-center">
+          <span class="_chinese"><span></span>题库中心</span>
+          <span class="_english">PERSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CENTER</span>
+        </div>
+      </li>
+      <li class="navBar-item _person" ui-sref="personalCenter">
+        <div class="navBar-center">
+          <span class="_chinese"><span></span>考试中心</span>
+          <span class="_english">PERSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CENTER</span>
+        </div>
+      </li>
+      <li class="navBar-item _person" ui-sref="personalCenter">
+        <div class="navBar-center">
+          <span class="_chinese"><span></span>资源中心</span>
+          <span class="_english">PERSON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CENTER</span>
+        </div>
+      </li>
+      <li class="_hoverShadow" id="_hoverShadow"></li>
+    </ul>
+  </div>
+
+<script type="text/javascript" src="scripts/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="ngmodules/sweetalert.min.js"></script>
+<script type="text/javascript" src="scripts/webuploader.js"></script>
+<script type="text/javascript" src="http://at.alicdn.com/t/font_1t1g81rvdd20rudi.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
+<script type="text/javascript" src="scripts/fileUoload.js"></script>
+<script src='http://cdn.jsdelivr.net/g/angular.textangular@1.5.0(textAngular-rangy.min.js+textAngular-sanitize.min.js+textAngular.min.js)'></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

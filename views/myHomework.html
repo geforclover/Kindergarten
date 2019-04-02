@@ -1,0 +1,26 @@
+<div class="mainView">
+  <div class="mainView-avater"><img src="images/avater.jpg" alt=""></div>
+  <div class="mainView-tabs" >
+    <div class="mainView-tabs-center">
+      <span class="item-info">王君婷</span>
+      <span class="item-info">北大附中实验幼儿园</span>
+    </div>
+    <a ui-sref="myHomework.expectationHomework" class="mainView-tabs-items -topLeft">
+      <span class="item-icon"></span>
+      <span class="item-label">待完成作业</span>
+    </a>
+    <a ui-sref="myHomework.createHomework" class="mainView-tabs-items -topRight">
+      <span class="item-icon"></span>
+      <span class="item-label">创建作业</span>
+    </a>
+    <a ui-sref="myHomework.correctedHomework" class="mainView-tabs-items -bottomLeft">
+      <span class="item-icon"></span>
+      <span class="item-label">已批改作业</span>
+    </a>
+    <a ui-sref="myHomework.unPublishHomework" class="mainView-tabs-items -bottomRight">
+      <span class="item-icon"></span>
+      <span class="item-label">未发布作业</span>
+    </a>
+  </div>
+</div>
+<div ui-view="" />

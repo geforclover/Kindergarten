@@ -1,0 +1,952 @@
+@charset "UTF-8";
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+body {
+  color: #000;
+  font-size: 14px;
+  font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif; }
+
+table {
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td, th, caption {
+  font-size: 14px;
+  line-height: 28px; }
+
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal; }
+
+a {
+  color: #333;
+  text-decoration: none; }
+
+img {
+  border: none; }
+
+ol, ul, li {
+  list-style: none; }
+
+input, textarea, select, button {
+  font: 14px Verdana,Helvetica,Arial,sans-serif;
+  border: 0;
+  outline: 0; }
+
+._clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+._clearfix {
+  *zoom: 1; }
+
+._f-l {
+  float: left; }
+
+._f-r {
+  float: right; }
+
+._auto {
+  margin: 0 auto; }
+
+._hidden {
+  display: none; }
+
+._m-t5 {
+  margin-top: 5px; }
+
+._m-t10 {
+  margin-top: 10px; }
+
+._m-t15 {
+  margin-top: 15px; }
+
+._m-t20 {
+  margin-top: 20px; }
+
+._p-t15 {
+  padding-top: 15px; }
+
+._t-center {
+  text-align: center; }
+
+body {
+  height: 100vh;
+  background: url("../images/platform-background.jpg") no-repeat top center;
+  background-size: cover; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 0; }
+
+::-webkit-scrollbar-track {
+  background-color: transparent; }
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 134, 215, 0.2); }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0086d7; }
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #0086d7; }
+
+input[type="text"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 4vh;
+  padding: 0 0 0 1vw;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background: #fff;
+  resize: none;
+  outline: 0;
+  font-size: 0.7vw; }
+
+input[type="text"][required]:focus {
+  border-color: #0086d7; }
+
+input[type="text"][required]:focus + label[placeholder]:before {
+  color: #0086d7; }
+
+input[type="text"][required]:focus + label[placeholder]:before,
+input[type="text"][required]:valid + label[placeholder]:before {
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+  -webkit-transform: translate(0, -1.8vh) scale(0.9, 0.9);
+  -ms-transform: translate(0, -1.8vh) scale(0.9, 0.9);
+  transform: translate(0, -1.8vh) scale(0.9, 0.9); }
+
+input[type="text"][required]:invalid + label[placeholder][alt]:before {
+  content: attr(alt); }
+
+input[type="text"][required] + label[placeholder] {
+  display: block;
+  pointer-events: none;
+  margin-top: -4vh; }
+
+input[type="text"][required] + label[placeholder]:before {
+  content: attr(placeholder);
+  display: inline-block;
+  margin: 0 -webkit-calc(1em + 2px);
+  margin: 0 calc(1em + 2px);
+  padding: 0 2px;
+  color: #898989;
+  white-space: nowrap;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+  -webkit-background-size: 100% 5px;
+  background-size: 100% 5px;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+input[type=checkbox] {
+  display: none; }
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden; }
+
+.top-navBar .--unfolded, .top-navBar .__label, .mainView-tabs-items .item-label, .user-list li, .workStatus-progress__percentage, .workStatus-status .item-text, .workList-label span, .workList-item span, .footer-navBar-wrap .navBar-center ._english {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+/* 顶部快捷菜单
+   ========================================================================== */
+.top-navBar {
+  position: fixed;
+  top: 2vh;
+  left: 1vw;
+  z-index: 1; }
+  .top-navBar a {
+    width: 2.9vw;
+    height: 2.9vw;
+    line-height: 2.9vw;
+    display: block;
+    font-size: 1.4vw;
+    color: #ffffff;
+    margin-right: 5px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    position: relative;
+    text-indent: 0.75vw;
+    transition: width 0.3s linear;
+    margin-bottom: 15px; }
+  .top-navBar .--folded {
+    animation: slideFolded 0.4s normal;
+    background-color: rgba(0, 0, 0, 0.6); }
+  .top-navBar .--unfolded {
+    width: 7.8vw;
+    height: 2.9vw;
+    line-height: 2.9vw;
+    background-color: rgba(23, 89, 208, 0.8); }
+  .top-navBar .__label {
+    width: 4.5vw;
+    height: 1.05vw;
+    line-height: 1.05vw;
+    position: absolute;
+    top: calc(2.9vw / 2 - 1.05vw / 2);
+    left: 2.9vw;
+    border-left: 1px solid #ffffff;
+    font-size: 0.8vw; }
+
+/* 主界面区
+   ========================================================================== */
+.mainView {
+  width: 35vw;
+  height: 35vw;
+  position: fixed;
+  bottom: 29vh;
+  left: calc(65vw / 2);
+  border-radius: 50%;
+  background: url("../images/main-view_bg.png") no-repeat center bottom;
+  background-size: 100% 100%;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none; }
+  .mainView-avater {
+    width: 15vw;
+    height: 15vw;
+    line-height: 15vw;
+    position: absolute;
+    top: 10vw;
+    left: 10vw;
+    display: flex;
+    border: 1px dashed #23b8ff;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; }
+    .mainView-avater img {
+      width: 7vw;
+      height: 7vw;
+      border-radius: 50%;
+      box-shadow: 0 0 0px 1.4vw #eaf9f9, 0 0 0px 2.5vw #d3f2f2; }
+  .mainView-tabs {
+    width: 35vw;
+    height: 35vw;
+    position: fixed;
+    bottom: 29vh;
+    left: calc(65vw / 2);
+    border-radius: 50%;
+    z-index: 1;
+    overflow: hidden; }
+    .mainView-tabs-items {
+      width: 5vw;
+      height: 5vw;
+      position: absolute;
+      text-align: center; }
+      .mainView-tabs-items .item-icon {
+        width: 2.5vw;
+        height: 2.5vw;
+        margin: 0.5vw auto;
+        display: block;
+        border-radius: 10px;
+        border: 1px solid #5ecaf4; }
+      .mainView-tabs-items .item-label {
+        color: #5ecaf4;
+        font-size: 0.8vw;
+        display: block; }
+    .mainView-tabs-center {
+      width: 8vw;
+      position: absolute;
+      bottom: 3vw;
+      left: 13.5vw;
+      text-align: center; }
+      .mainView-tabs-center .item-info {
+        display: block;
+        font-size: 0.8vw; }
+      .mainView-tabs-center .item-info:first-child {
+        font-size: 1.5vw;
+        margin-bottom: 10px; }
+    .mainView-tabs .-topLeft {
+      top: 14vw;
+      left: 2.5vw; }
+    .mainView-tabs .-topRight {
+      top: 14vw;
+      right: 2.5vw; }
+    .mainView-tabs .-bottomLeft {
+      bottom: 7vw;
+      left: 5vw; }
+    .mainView-tabs .-bottomRight {
+      bottom: 7vw;
+      right: 5vw; }
+
+/* 窗体界面
+   ========================================================================== */
+@keyframes tableViewApper {
+  0% {
+    bottom: 0;
+    transform: rotate(2160deg) scale(0); }
+  100% {
+    bottom: 24vh;
+    transform: rotate(0deg) scale(1); } }
+.tableView {
+  position: fixed;
+  z-index: 2; }
+  .tableView-title {
+    height: 6vh;
+    line-height: 6vh;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1vw;
+    color: #ffffff;
+    padding-left: 4vw;
+    user-select: none;
+    background-color: #0086d7; }
+    .tableView-title__icon {
+      margin-right: 1vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .tableView-title__icon img {
+        width: 15px;
+        height: 15px;
+        margin-left: 1vw;
+        cursor: pointer; }
+  .tableView-content {
+    height: calc(100% - 6vh);
+    border: 1px solid #d0d0d0;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    position: relative; }
+    .tableView-content-heading {
+      height: 6vh;
+      line-height: 6vh;
+      padding-left: 1.5vw;
+      color: #5a5a5a;
+      font-size: 0.8vw;
+      font-weight: bold;
+      border-bottom: 1px solid #d0d0d0;
+      background-color: #ececec; }
+      .tableView-content-heading .--classes {
+        display: inline;
+        margin-left: 20px;
+        padding: 0.2vw 0.5vw;
+        font-size: 0.7vw;
+        color: #ffffff;
+        cursor: pointer;
+        background-color: #3da7f1;
+        position: relative; }
+        .tableView-content-heading .--classes__icon {
+          font-size: 0.85vw;
+          padding: 0 0.2vw; }
+        .tableView-content-heading .--classes__name {
+          min-width: 5vw;
+          display: inline-block; }
+    .tableView-content-main {
+      display: flex; }
+      .tableView-content-main .mainView-left {
+        width: 15%;
+        border-radius: 0 0 0 10px;
+        overflow: auto;
+        background-color: #ececec; }
+        .user-list li {
+          width: 100%;
+          text-align: center;
+          padding: 1.2vh 0;
+          cursor: pointer;
+          font-size: 0.8vw; }
+        .user-list li.active {
+          background-color: #ffffff; }
+      .tableView-content-main .mainView-right {
+        width: 85%;
+        border-radius: 0 0 10px 0;
+        background-color: #ffffff; }
+    .tableView-content-leftPanel {
+      width: 8vw;
+      height: calc(100% - 2px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1; }
+      .tableView-content-leftPanel__title {
+        height: 6vh;
+        line-height: 6vh;
+        text-align: center;
+        color: #ffffff;
+        font-size: 0.8vw;
+        font-weight: bold;
+        border-radius: 10px 10px 0 0;
+        border: 1px solid #0086d7;
+        border-bottom: 0;
+        background-color: #0086d7; }
+      .tableView-content-leftPanel__list {
+        height: calc(100% - 6vh);
+        border: 1px solid #d0d0d0;
+        border-top: 0;
+        border-radius: 0 0 10px 10px;
+        background-color: #ececec; }
+        .tableView-content-leftPanel__list li {
+          text-align: center;
+          padding: 1.2vh 0;
+          cursor: pointer;
+          font-size: 0.8vw; }
+        .tableView-content-leftPanel__list li.active {
+          background-color: #ffffff; }
+    .tableView-content-rightPanel {
+      width: 12vw;
+      height: calc(100% - 2px);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1; }
+      .tableView-content-rightPanel__title {
+        height: 6vh;
+        line-height: 6vh;
+        text-align: center;
+        color: #ffffff;
+        font-size: 0.8vw;
+        font-weight: bold;
+        border-radius: 10px 10px 0 0;
+        border: 1px solid #0086d7;
+        border-bottom: 0;
+        background-color: #0086d7; }
+      .tableView-content-rightPanel__list {
+        height: calc(100% - 6vh);
+        border: 1px solid #d0d0d0;
+        border-top: 0;
+        border-radius: 0 0 10px 10px;
+        background-color: #ececec;
+        overflow: hidden; }
+        .tableView-content-rightPanel__list li {
+          width: calc(100% / 3);
+          float: left;
+          text-align: center;
+          padding: 1.2vh 0;
+          cursor: pointer;
+          font-size: 0.8vw; }
+
+.tableView.--zoomIn {
+  width: 52vw;
+  height: 57vh;
+  bottom: 24vh;
+  left: 24vw; }
+
+.tableView.--zoomOut {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0; }
+  .tableView.--zoomOut .tableView-title,
+  .tableView.--zoomOut .tableView-content,
+  .tableView.--zoomOut .mainView-left,
+  .tableView.--zoomOut .mainView-right {
+    border-radius: 0; }
+
+/* 创建作业
+   ========================================================================== */
+@keyframes paperViewAppear {
+  0% {
+    transform: translateX(100%); }
+  100% {
+    transform: translateX(0%); } }
+.createHomework {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  border-radius: 0; }
+  .createHomework .tableView-createHomework {
+    height: calc(100% - 6vh);
+    border: 1px solid #d0d0d0;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    position: relative; }
+    .createHomework .tableView-createHomework .createForm {
+      width: 50%;
+      background-color: #ececec;
+      overflow: auto; }
+      .createHomework .tableView-createHomework .createForm-item {
+        min-height: 4vh;
+        line-height: 4vh;
+        display: flex;
+        margin: 2vh 2vw; }
+        .createHomework .tableView-createHomework .createForm-item__label {
+          font-size: 0.8vw;
+          margin-right: 1vw;
+          user-select: none; }
+        .createHomework .tableView-createHomework .createForm-item__input {
+          width: 70%; }
+        .createHomework .tableView-createHomework .createForm-item__checkbox {
+          width: 70%;
+          user-select: none; }
+          .createHomework .tableView-createHomework .createForm-item__checkbox--item {
+            float: left;
+            padding: 0 0.8vw;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            background-color: #ffffff;
+            cursor: pointer; }
+          .createHomework .tableView-createHomework .createForm-item__checkbox span input[type=checkbox]:checked + label {
+            color: #ffffff;
+            background-color: #0086d7; }
+          .createHomework .tableView-createHomework .createForm-item__checkbox span:nth-child(2n+2),
+          .createHomework .tableView-createHomework .createForm-item__checkbox span:nth-child(2n+2) label {
+            margin: 0 10px; }
+          .createHomework .tableView-createHomework .createForm-item__checkbox span.active {
+            border: 1px solid #0086d7;
+            background-color: #0086d7;
+            color: #ffffff; }
+        .createHomework .tableView-createHomework .createForm-item__btn {
+          margin-left: 0.5vw;
+          font-size: 1vw;
+          cursor: pointer;
+          color: #898989; }
+        .createHomework .tableView-createHomework .createForm-item__upload {
+          width: 70%;
+          display: flex; }
+          .createHomework .tableView-createHomework .createForm-item__upload .testPaper {
+            padding: 0.5vh 0.5vw;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-right: 0.5vw;
+            background-color: #ee6f6f; }
+          .createHomework .tableView-createHomework .createForm-item__upload .testPaper:disabled {
+            color: #333;
+            background-color: #d0d0d0; }
+          .createHomework .tableView-createHomework .createForm-item__upload .testPaper__choose {
+            width: 100%;
+            height: 4vh;
+            padding: 0 0 0 1vw;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            background: #fff;
+            resize: none;
+            outline: 0;
+            font-size: 0.7vw; }
+      .createHomework .tableView-createHomework .createForm-button {
+        min-height: 4vh;
+        line-height: 4vh;
+        display: flex;
+        margin: 2vh 0;
+        padding: 2vh 25% 0;
+        justify-content: space-around;
+        border-top: 1px solid #cacaca;
+        position: relative; }
+        .createHomework .tableView-createHomework .createForm-button span {
+          padding: 0 0.8vw;
+          border-radius: 5px;
+          border: 1px solid #0086d7;
+          background-color: #0086d7;
+          cursor: pointer;
+          color: #ffffff; }
+    .createHomework .tableView-createHomework .createRelation {
+      width: 50%;
+      background-color: #ececec;
+      overflow: auto; }
+      .createHomework .tableView-createHomework .createRelation-item {
+        min-height: 4vh;
+        line-height: 4vh;
+        display: flex;
+        margin: 2vh 2vw; }
+        .createHomework .tableView-createHomework .createRelation-item__label {
+          font-size: 0.8vw;
+          margin-right: 1vw;
+          user-select: none; }
+        .createHomework .tableView-createHomework .createRelation-item__checkbox {
+          width: 70%;
+          user-select: none; }
+          .createHomework .tableView-createHomework .createRelation-item__checkbox--item {
+            float: left;
+            padding: 0 0.8vw;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            background-color: #ffffff;
+            cursor: pointer; }
+          .createHomework .tableView-createHomework .createRelation-item__checkbox span.active {
+            border: 1px solid #0086d7;
+            background-color: #0086d7;
+            color: #ffffff; }
+        .createHomework .tableView-createHomework .createRelation-item__list {
+          width: 70%;
+          border: 1px solid #cccccc;
+          background: white;
+          border-radius: 5px;
+          padding: 0.5vw 1vw 0; }
+          .createHomework .tableView-createHomework .createRelation-item__list li:not(.pageList) {
+            height: 4vh;
+            line-height: 1.3;
+            display: flex;
+            padding-bottom: 1vh;
+            margin-bottom: 2vh;
+            border-bottom: 1px dashed #ccc; }
+          .createHomework .tableView-createHomework .createRelation-item__list--paper {
+            width: 81%; }
+            .createHomework .tableView-createHomework .createRelation-item__list--paper ._title {
+              font-size: 0.8vw;
+              display: block; }
+            .createHomework .tableView-createHomework .createRelation-item__list--paper ._time {
+              color: #666;
+              font-size: 12px; }
+          .createHomework .tableView-createHomework .createRelation-item__list--btn {
+            width: 19%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; }
+            .createHomework .tableView-createHomework .createRelation-item__list--btn input {
+              padding: 0.5vh 0.5vw;
+              color: #fff;
+              border-radius: 5px;
+              background-color: #ee6f6f;
+              font-size: 12px;
+              cursor: pointer; }
+      .createHomework .tableView-createHomework .createRelation-button {
+        min-height: 4vh;
+        line-height: 4vh;
+        display: flex;
+        margin: 2vh 0;
+        padding: 2vh 25% 0;
+        justify-content: space-around;
+        border-top: 1px solid #cacaca; }
+        .createHomework .tableView-createHomework .createRelation-button span {
+          padding: 0 0.8vw;
+          border-radius: 5px;
+          border: 1px solid #0086d7;
+          background-color: #0086d7;
+          cursor: pointer;
+          color: #ffffff; }
+    .createHomework .tableView-createHomework .createView {
+      width: 50%;
+      background-color: #ffffff; }
+      .createHomework .tableView-createHomework .createView-item {
+        height: 4vh;
+        line-height: 4vh;
+        display: flex;
+        margin: 2vh 2vw; }
+        .createHomework .tableView-createHomework .createView-item__label {
+          font-size: 0.8vw;
+          margin-right: 1vw; }
+        .createHomework .tableView-createHomework .createView-item__view {
+          width: 70%;
+          border-bottom: 1px solid #cccccc;
+          display: flex; }
+          .createHomework .tableView-createHomework .createView-item__view--item {
+            color: #666; }
+      .createHomework .tableView-createHomework .createView-table {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 1vw 2vh;
+        margin: 2vh 2vw; }
+        .createHomework .tableView-createHomework .createView-table__card {
+          color: #fff;
+          font-size: 0.85vw;
+          border-radius: 5px 5px 0 0; }
+          .createHomework .tableView-createHomework .createView-table__card ._static {
+            padding: 2vh 0.5vw;
+            border-radius: 5px 5px 0 0;
+            text-align: center;
+            background-color: #f5a0a0; }
+          .createHomework .tableView-createHomework .createView-table__card ._hover {
+            padding: 0.5vw;
+            background-color: #696d71; }
+        .createHomework .tableView-createHomework .createView-table__card._onHover {
+          transform: translateY(1vh);
+          opacity: 1;
+          box-shadow: 0 0 7px 4px rgba(0, 0, 0, 0.4); }
+        .createHomework .tableView-createHomework .createView-table__card._onLeave {
+          opacity: 0.8; }
+    .createHomework .tableView-createHomework .paperView {
+      width: 50%;
+      height: 100%;
+      background-color: #ffffff;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      transform: translateX(0%);
+      animation: paperViewAppear 0.3s normal; }
+      .createHomework .tableView-createHomework .paperView-title {
+        width: 96%;
+        height: 5vh;
+        line-height: 5vh;
+        margin: 3vh auto 0;
+        border-radius: 5px 5px 0 0;
+        font-size: 1.2vw;
+        text-align: center;
+        color: #ffffff;
+        background-color: #ee6f6f; }
+      .createHomework .tableView-createHomework .paperView-content {
+        width: calc(96% - 2px - 3vw);
+        height: calc(100% - 5vh - 6vh - 1px - 3vw);
+        border: 1px solid #c8c8c8;
+        border-top: 0;
+        border-radius: 0 0 5px 5px;
+        margin: 0 auto 3vh;
+        overflow: auto;
+        padding: 1.5vw; }
+        .createHomework .tableView-createHomework .paperView-content__item {
+          display: flex;
+          border-bottom: 1px dashed #ccc;
+          padding-bottom: 1vh;
+          margin-bottom: 2vh;
+          font-size: 0.9vw; }
+          .createHomework .tableView-createHomework .paperView-content__item ._index {
+            font-size: 1vw;
+            color: #ee6f6f;
+            margin-right: 10px; }
+  .createHomework .tableView-title {
+    border-radius: 0; }
+
+/* 作业进度详细
+   ========================================================================== */
+.workStatus {
+  width: 90%;
+  margin: 1.5vw auto 1vw;
+  display: flex; }
+  .workStatus-avater {
+    width: 4vw;
+    height: 4vw;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    overflow: hidden; }
+  .workStatus-progress {
+    width: 50%;
+    margin: 0 1.5vw; }
+    .workStatus-progress__wrap {
+      width: 75%;
+      display: flex;
+      margin-bottom: 3vh; }
+    .workStatus-progress__percentage {
+      width: 6vw;
+      min-height: 1.3vw;
+      padding: 0.3vw 1.5vw;
+      text-align: center;
+      font-size: 0.9vw;
+      border-radius: 5px;
+      color: #ffffff;
+      background-color: #3da7f1; }
+    .workStatus-progress__strip {
+      width: 100%;
+      height: 1vh;
+      position: relative;
+      background-color: #e7e7e7;
+      border-radius: 20px;
+      overflow: hidden; }
+    .workStatus-progress__current {
+      width: 100%;
+      height: 1vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 20px;
+      background-color: #33ca85;
+      transform: translateX(-100%);
+      transition: transform 0.8s linear; }
+  .workStatus-status {
+    width: calc(50% - 7vw);
+    display: flex;
+    justify-content: flex-end; }
+    .workStatus-status__item {
+      width: 4vw;
+      margin-left: 1vw; }
+    .workStatus-status .item-label {
+      width: 2.7vw;
+      height: 2.7vw;
+      line-height: 2.7vw;
+      margin: 0 auto 0.3vw;
+      border-radius: 50%;
+      border: 1px solid;
+      text-align: center;
+      display: block; }
+    .workStatus-status ._item-yellow {
+      border-color: #f3b242;
+      color: #f3b242; }
+    .workStatus-status ._item-green {
+      border-color: #33ca85;
+      color: #33ca85; }
+    .workStatus-status ._item-blue {
+      border-color: #3da7f1;
+      color: #3da7f1; }
+    .workStatus-status .item-text {
+      color: #474747;
+      font-size: 0.6vw;
+      text-align: center;
+      display: block; }
+
+.workList {
+  width: 90%;
+  margin: 0 auto; }
+  .workList-label, .workList-item {
+    height: 2vw;
+    line-height: 2vw;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #e0e0e0; }
+    .workList-label span, .workList-item span {
+      text-align: center;
+      font-size: 0.75vw; }
+    .workList-label span:first-child, .workList-item span:first-child {
+      width: 10%; }
+    .workList-label span:nth-child(2), .workList-item span:nth-child(2) {
+      width: 35%;
+      cursor: pointer; }
+    .workList-label span:nth-child(3), .workList-item span:nth-child(3) {
+      width: 20%; }
+    .workList-label span:nth-child(4), .workList-item span:nth-child(4) {
+      width: 20%; }
+    .workList-label span:last-child, .workList-item span:last-child {
+      width: 15%; }
+    .workList-label ._excellent, .workList-item ._excellent {
+      color: #ff8182;
+      font-size: 1.3vw; }
+  .workList-label {
+    border-radius: 5px 5px 0 0;
+    background-color: #f1f1f1; }
+  .workList-item {
+    border-top: 0; }
+
+/* 分页
+   ========================================================================== */
+.pageList {
+  height: 3vh;
+  line-height: 3vh;
+  display: flex;
+  justify-content: center;
+  margin: 0.7vw 0 0.9vw; }
+  .pageList a {
+    padding: 0 0.5vw;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer; }
+  .pageList a.active {
+    color: #ffffff;
+    background-color: #0086d7; }
+
+/* 底部切换
+   ========================================================================== */
+.footer-navBar {
+  width: 100vw;
+  height: 4.7vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); }
+  .footer-navBar-wrap {
+    width: 80vw;
+    height: 4.7vw;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0.6vw; }
+    .footer-navBar-wrap li {
+      width: calc(46vw / 4);
+      height: inherit;
+      position: absolute;
+      z-index: 1;
+      cursor: pointer;
+      background-color: transparent; }
+    .footer-navBar-wrap li._hoverShadow {
+      width: calc(46vw / 4);
+      height: 100%;
+      position: absolute;
+      left: calc(-46vw / 4 - 1.5vw);
+      box-shadow: 0 0 5px 10px rgba(23, 89, 208, 0.5);
+      background: rgba(23, 89, 208, 0.5);
+      z-index: 0; }
+    .footer-navBar-wrap li.--active {
+      box-shadow: 0 0 5px 10px rgba(23, 89, 208, 0.5);
+      background: rgba(23, 89, 208, 0.5); }
+    .footer-navBar-wrap li._courses ._chinese span {
+      background: #707373 url("../images/icons/icon-courses.png") no-repeat center center; }
+    .footer-navBar-wrap li._homework ._chinese span {
+      background: #707373 url("../images/icons/icon-homework.png") no-repeat center center; }
+    .footer-navBar-wrap li._exciting ._chinese span {
+      background: #707373 url("../images/icons/icon-exciting.png") no-repeat center center; }
+    .footer-navBar-wrap li._person ._chinese span {
+      background: #707373 url("../images/icons/icon-person.png") no-repeat center center; }
+    .footer-navBar-wrap .navBar-center {
+      height: 2.7vw;
+      margin: 1vw 21%; }
+      .footer-navBar-wrap .navBar-center > span {
+        height: 1.25vw;
+        line-height: 1.25vw;
+        display: block; }
+      .footer-navBar-wrap .navBar-center ._chinese {
+        font-size: 0.9vw;
+        color: #ffffff;
+        padding-bottom: 5px;
+        margin-bottom: 2px;
+        border-bottom: 1px solid #ffffff; }
+        .footer-navBar-wrap .navBar-center ._chinese span {
+          width: 1.15vw;
+          height: 1.15vw;
+          float: left;
+          margin: 1px 10px 0 0; }
+      .footer-navBar-wrap .navBar-center ._english {
+        color: #ffffff;
+        font-size: 0.7vw; }
+    .footer-navBar-wrap li.--hover ._chinese span,
+    .footer-navBar-wrap li.--active ._chinese span {
+      background-color: #1f89db; }
+
+/* 文件上传
+   ========================================================================== */
+.webuploader-container {
+  width: 5.2vw;
+  height: 5.2vw;
+  position: relative;
+  border: 1px solid #c6c6c6;
+  border-radius: 10px;
+  overflow: hidden; }
+  .webuploader-container * {
+    width: 100%;
+    height: 100%; }
+  .webuploader-container .upload-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; }
+    .webuploader-container .upload-btn input {
+      float: left;
+      cursor: pointer;
+      outline: 0; }
+
+.uploader-list {
+  display: flex; }
+  .uploader-list img {
+    border: 1px solid #c6c6c6;
+    border-radius: 10px;
+    overflow: hidden; }
+  .uploader-list .file-item {
+    margin-right: 10px;
+    position: relative; }
+  .uploader-list ._close {
+    width: 1vw;
+    height: 1vw;
+    line-height: 1vw;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    background-color: #a8a8a8;
+    cursor: pointer;
+    user-select: none; }
+  .uploader-list * {
+    width: 5.2vw;
+    height: 5.2vw; }
+
+/*# sourceMappingURL=index.css.map */

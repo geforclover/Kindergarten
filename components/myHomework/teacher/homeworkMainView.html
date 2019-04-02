@@ -1,0 +1,50 @@
+<div class="tableView" ng-controller="tableViewCtrl" ng-class="{true: '--zoomOut', false: '--zoomIn'}[isZoom]">
+	<div class="tableView-title">
+		<span class="tableView-title__name" ng-bind="thisTitle"></span>
+		<span class="tableView-title__icon">
+			<img src="/kindergarten/images/icons/icon-zoomIn.png" alt="" ng-click="setZoomClass(false)" ng-hide="{false: '--zoomIn'}[isZoom]">
+			<img src="/kindergarten/images/icons/icon-zoomOut.png" alt="" ng-click="setZoomClass(true)" ng-hide="{true: '--zoomOut'}[isZoom]">
+			<img src="/kindergarten/images/icons/icon-close.png" alt="" ng-click="tableViewclose()">
+		</span>
+	</div>
+	<div class="tableView-content" ng-controller="homeworkCtrl">
+		<div class="tableView-content-heading" id="tableHeading">
+			<span>请您选择班级：</span>
+			<div class="--classes" id="--classes" ng-click="popLeftPanel()">
+				<span class="--classes__icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bianji1"></use></svg></span>
+				<span ng-bind="className" class="--classes__name"></span>
+				<span class="--classes__icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bianji1"></use></svg></span>
+			</div>
+		</div>
+		<div class="tableView-content-main" id="tableViewMain">
+			<div class="mainView-left">
+				<ul class="user-list">
+					<li ng-repeat="workName in newHomeworkInfo | byName: 'createtime'" ng-class="getWorkNameClass(workName)"
+							ng-click="selectWorkName(workName, $index)">
+						<span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bianji1"></use></svg></span>
+						<span>{{workName}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="mainView-right" ng-controller="homeworkDetailCtrl">
+				<div ng-include="'components/myHomework/teacher/expectationHomeworkDetail.html'" ng-show="thisStatus === 'expectation'"></div>
+				<div ng-include="'components/myHomework/teacher/homeworkProgressDetail.html'" ng-show="thisStatus === 'progress'"></div>
+				<div ng-include="'components/myHomework/teacher/correctedHomeworkDetail.html'" ng-show="thisStatus === 'corrected'"></div>
+				<div ng-include="'components/myHomework/teacher/unPublishHomeworkDetail.html'" ng-show="thisStatus === 'unPublish'"></div>
+			</div>
+		</div>
+		<div class="tableView-content-leftPanel" id="leftPanel">
+			<div class="tableView-content-leftPanel__title">班级列表</div>
+			<ul class="tableView-content-leftPanel__list">
+				<li ng-repeat="item in ajax.classList" ng-click="setClassId(item.name, item.classid, item.gradeid)"
+				    ng-class="getClassNameClass(item.name)">{{item.name}}</li>
+			</ul>
+		</div>
+		<div class="tableView-content-rightPanel" id="rightPanel">
+			<div class="tableView-content-rightPanel__title">学生列表</div>
+			<ul class="tableView-content-rightPanel__list">
+				<li ng-repeat="stu in ajax.workStatusList">{{stu.student_name}}</li>
+			</ul>
+		</div>
+	</div>
+</div>

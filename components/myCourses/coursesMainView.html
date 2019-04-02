@@ -1,0 +1,29 @@
+<div class="tableView" ng-controller="tableViewCtrl" ng-class="{true: '--zoomOut', false: '--zoomIn'}[isZoom]">
+	<div class="tableView-title">
+		<span class="tableView-title__name" ng-bind="thisTitle"></span>
+		<span class="tableView-title__icon">
+			<img src="/kindergarten/public/images/icons/icon-zoomIn.png" alt="" ng-click="setZoomClass(false)" ng-hide="{false: '--zoomIn'}[isZoom]">
+			<img src="/kindergarten/public/images/icons/icon-zoomOut.png" alt="" ng-click="setZoomClass(true)" ng-hide="{true: '--zoomOut'}[isZoom]">
+			<img src="/kindergarten/public/images/icons/icon-close.png" alt="" ng-click="tableViewclose()">
+		</span>
+	</div>
+	<div class="tableView-content" ng-controller="homeworkCtrl">
+		<div class="tableView-content-main" id="tableViewMain">
+			<div class="mainView-left">
+				<ul class="user-list">
+					<li ng-repeat="username in data.userinfomation | uname: 'name'" ng-class="getNameClass(username)"
+							ng-click="selectName(username, $index)">
+						<span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bianji1"></use></svg></span>
+						<span>{{username}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="mainView-right" ng-controller="homeworkDetailCtrl">
+				<div ng-include="'components/myHomework/expectationHomeworkDetail.html'" ng-show="thisStatus == 0"></div>
+				<div ng-include="'components/myHomework/homeworkProgressDetail.html'" ng-show="thisStatus == 1"></div>
+				<div ng-include="'components/myHomework/correctedHomeworkDetail.html'" ng-show="thisStatus == 2"></div>
+				<div ng-include="'components/myHomework/excellentHomeworkDetail.html'" ng-show="thisStatus == 3"></div>
+			</div>
+		</div>
+	</div>
+</div>

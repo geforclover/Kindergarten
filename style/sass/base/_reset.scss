@@ -1,0 +1,22 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body { color:#000; font-size:14px; font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif; }
+table{border: 0; border-collapse: collapse; border-spacing: 0;}
+td,th,caption { font-size:14px; line-height: 28px;}
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+a { color:#333; text-decoration:none; }
+img { border:none;}
+ol,ul,li { list-style:none; }
+input, textarea, select, button { font:14px Verdana,Helvetica,Arial,sans-serif; border: 0; outline: 0;}
+._clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
+._clearfix { *zoom:1; }
+._f-l{float: left;}
+._f-r{float: right;}
+._auto{margin: 0 auto;}
+._hidden{display: none;}
+._m-t5{margin-top: 5px;}
+._m-t10{margin-top: 10px;}
+._m-t15{margin-top: 15px;}
+._m-t20{margin-top: 20px;}
+._p-t15{padding-top: 15px;}
+._t-center{text-align: center;}

@@ -1,0 +1,39 @@
+<div class="workStatus">
+	<div class="workStatus-avater"></div>
+	<div class="workStatus-progress">
+		<div class="workStatus-progress__wrap">
+			<span class="workStatus-progress__percentage" ng-bind="'批改率：' + corrected + '%'"></span>
+		</div>
+		<div class="workStatus-progress__strip">
+			<div class="workStatus-progress__current" ng-style="correctedStyle"></div>
+		</div>
+	</div>
+	<div class="workStatus-status">
+		<div class="workStatus-status__item">
+			<span class="item-label _item-yellow"><span ng-bind="currentStu"></span>/<span ng-bind="totalStu"></span></span>
+			<span class="item-text">作业批改数</span>
+		</div>
+	</div>
+</div>
+<div class="workList" id="workList">
+	<div class="workList-label">
+		<span>序号</span>
+		<span>作业名称</span>
+		<span>作业发布时间</span>
+		<span>作业科目</span>
+		<span>一键批改</span>
+	</div>
+	<div class="workList-item" ng-repeat="list in ajax.homeworkInfo | filter: nameFilterFn | range:selectedPage:pageSize">
+		<span>{{$index + 1}}</span>
+		<span ng-click="setHomeworkId(list.homeworkid, list.homeworkRange, 1, 1)">{{list.names}}</span>
+		<span>{{list.createtime}}</span>
+		<span>{{list.coursename}}<svg class="icon" aria-hidden="true"><use xlink:href={{getIcons(list.homeworkStatus)}}></use></svg></span>
+		<span ng-class="list.goodnum == 0?'': '_excellent'">{{list.goodnum == 0?'待定': ''}}
+			<svg class="icon" aria-hidden="true" ng-hide="list.goodnum == 0"><use xlink:href="#icon-jiangzhang1"></use></svg>
+		</span>
+	</div>
+	<div class="workList-page">
+		<a ng-repeat="page in ajax.homeworkInfo | filter:nameFilterFn | pageCount:pageSize" ng-click="selectPage($index + 1)"
+			 ng-class="getPageClass($index + 1)">{{$index + 1}}</a>
+	</div>
+</div>

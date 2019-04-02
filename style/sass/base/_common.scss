@@ -1,0 +1,168 @@
+@charset "utf-8";
+
+$lte9:true !default;
+//背景线性渐变
+@mixin back_liner($posi, $first_color, $last_color){
+    background-image: linear-gradient($posi, $first_color, $last_color);
+    background-image: -ms-linear-gradient($posi, $first_color, $last_color);
+    background-image: -webkit-linear-gradient($posi, $first_color, $last_color);
+    background-image: -o-linear-gradient($posi, $first_color, $last_color);
+    background-image: -moz-linear-gradient($posi, $first_color, $last_color);
+}
+//宽高
+@mixin w_h($width, $height){
+    width: $width;
+    height: $height;
+}
+//宽高行高
+@mixin w_h_lh($width, $height, $lh){
+    width: $width;
+    height: $height;
+    line-height: $lh;
+}
+//高，行高
+@mixin h_lh($h, $lh){
+    height: $h;
+    line-height: $lh;
+}
+//全局定位变量单方向
+@mixin po_l($l){
+    position: absolute;
+    left: $l;
+}
+@mixin po_r($r){
+    position: absolute;
+    right: $r;
+}
+@mixin po_t($t){
+    position: absolute;
+    top: $t;
+}
+@mixin po_b($b){
+    position: absolute;
+    bottom: $b;
+}
+//全局定位变量双方向
+@mixin po_tl($t, $l){
+    position: absolute;
+    top: $t;
+    left: $l;
+}
+@mixin po_tr($t, $r){
+    position: absolute;
+    top: $t;
+    right: $r;
+}
+@mixin po_bl($b, $l){
+    position: absolute;
+    bottom: $b;
+    left: $l;
+}
+@mixin po_br($b, $r){
+    position: absolute;
+    bottom: $b;
+    right: $r;
+}
+//固定定位
+@mixin po_b_fix($b){
+    position: fixed;
+    bottom: $b;
+}
+//不重复背景图
+@mixin normal_back($name){
+    background: url('../images/'+$name+'.png') no-repeat;
+}
+@mixin back_image_png($name, $align, $vertical){
+    background: url('../images/'+$name+'.png') no-repeat $align $vertical;
+}
+@mixin back_image_jpg($name, $align, $vertical){
+    background: url('../images/'+$name+'.jpg') no-repeat $align $vertical;
+}
+//调整尺寸背景图
+@mixin back_image_pngS($name, $align, $vertical, $Size_X, $Size_Y){
+    background: url('../images/'+$name+'.png') no-repeat $align $vertical;
+    background-size: $Size_X $Size_Y;
+}
+//背景色背景图
+@mixin back_color_noPosi($color, $name){
+    background: $color url('../images/'+$name+'.png') no-repeat;
+}
+@mixin back_color_img($color, $name, $align, $vertical){
+    background: $color url('../images/'+$name+'.jpg') no-repeat $align $vertical;
+}
+@mixin back_color_png($color, $name, $align, $vertical){
+    background: $color url('../images/'+$name+'.png') no-repeat $align $vertical;
+}
+
+
+//阴影
+//对象选择器 {box-shadow:投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色}
+@mixin shadow($x, $y, $blur, $spread, $color){
+    -moz-box-shadow:$x $y $blur $spread $color;
+    -webkit-box-shadow:$x $y $blur $spread $color;
+    box-shadow:$x $y $blur $spread $color;
+}
+//文本溢出
+%overhide{
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+//多行文本溢出
+@mixin mutil_overhide($line){
+    display: -webkit-box-;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}
+//滚动条样式模块
+@mixin scroll($width, $button, $track_color, $track_radius, $thumb_color, $thumb_border, $thumb_radius, $hover_color){
+    //滚动条宽度、滑动条按钮、滑道、滑道圆角宽度、滑动条表面、滑动条边框、滑动条圆角宽度、鼠标滑过滑动条
+    &::-webkit-scrollbar{
+        ;width: $width;
+    }
+    &::-webkit-scrollbar-button{
+        ;display: $button;
+    }
+    &::-webkit-scrollbar-track-piece{
+        ;background-color: $track_color;
+        -webkit-border-radius: $track_radius;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: $thumb_color;
+        border: $thumb_border;
+        border-radius: $thumb_radius;
+    }
+    &::-webkit-scrollbar-thumb:hover{
+        background-color: $hover_color;
+    }
+}
+
+//边框单边无
+@mixin border_none($border, $side){
+    border: $border;
+    border-#{$side}: none;
+}
+//边框单边不同
+@mixin bor_aDiff($border1, $side, $border2){
+    border: $border1;
+    border-#{$side}: $border2;
+}
+//双边框完全相同
+@mixin border_Twosame($side1, $side2, $border){
+    border-#{$side1}: $border;
+    border-#{$side2}: $border;
+}
+//双边框宽度不同
+@mixin border_diffW($side1, $size1, $side2, $size2, $type, $color){
+    border-#{$side1}: $size1 $type $color;
+    border-#{$side2}: $size2 $type $color;
+}
+//三边框宽度不同颜色相同
+@mixin bor_Col_Same($side1, $size1, $side2, $size2, $side3, $size3, $type, $color){
+    border-#{$side1}: $size1 $type $color;
+    border-#{$side2}: $size2 $type $color;
+    border-#{$side3}: $size3 $type $color;
+}
